@@ -1,0 +1,179 @@
+/* src/app/auth/register/register.component.css */
+
+/*
+  Definição de variáveis de cor baseadas no seu código StyleSheet.
+  --primary-color: Cor do botão e links (#F9A826)
+  --border-color: Cor da borda dos inputs (#CCCCCC)
+  --text-color: Cor principal do texto (#000)
+*/
+:host {
+  --primary-color: #F9A826;
+  --text-color: #000;
+  --border-color: #CCCCCC;
+  --icon-color: #757575; /* Cor para os ícones */
+
+  /* Cores PROPOSTAS para o gradiente, para harmonizar com a cor primária */
+  --page-gradient-start: #FFFDE7; /* Amarelo bem claro e cremoso */
+  --page-gradient-end: #f29f05;   /* Um tom creme/pêssego um pouco mais quente */
+
+  /* Cores para feedback de erro */
+  --error-color: #D32F2F;
+}
+
+.register-page-wrapper {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;    /* Centraliza verticalmente */
+  min-height: 100vh;      /* Ocupa a tela inteira */
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    170deg, /* Ângulo suave */
+    var(--page-gradient-start) 0%,
+    var(--page-gradient-end) 100%
+  );
+}
+
+.register-container {
+  width: 100%;
+  max-width: 400px; /* Como no seu formContainer */
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Equivalente ao seu 'title' */
+.register-container h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: var(--text-color);
+  text-align: left;
+}
+
+/* Equivalente ao seu 'inputContainer' */
+.form-field-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--border-color);
+  margin-bottom: 25px; /* Margin de 25px do inputContainer */
+  padding-bottom: 8px;
+}
+
+/* Estilo para os ícones de material */
+.form-field-group .field-icon {
+  color: var(--icon-color);
+  margin-right: 10px; /* Espaço entre ícone e input */
+}
+
+/* Container do input para ocupar o espaço restante */
+.form-field-group .form-field {
+  flex: 1;
+}
+
+/* Equivalente ao seu 'input' */
+.form-field input {
+  width: 100%;
+  padding-left: 15px; /* paddingLeft do seu estilo */
+  color: var(--text-color);
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.form-field input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+/* Efeito de foco na borda */
+.form-field-group:focus-within {
+  border-bottom-color: var(--primary-color);
+}
+
+.error-message-container {
+  text-align: left;
+  margin-top: -20px; /* Puxa a mensagem para mais perto do campo */
+  margin-bottom: 15px;
+  min-height: 18px;
+}
+
+.error-message-container small {
+  color: var(--error-color);
+  font-size: 0.8em;
+}
+
+/* Equivalente ao seu 'signUpButton' e 'signUpButtonText' */
+.btn-signup {
+  background-color: var(--primary-color);
+  border-radius: 25px;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px; /* Adicionado um espaço antes do botão */
+  
+  /* Estilos para o texto do botão */
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: bold;
+
+  /* Outras propriedades */
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-signup:hover:not(:disabled) {
+  transform: translateY(-2px); /* Efeito de elevação */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-signup:disabled {
+  background-color: #E0E0E0; /* Cinza claro para desabilitado */
+  cursor: not-allowed;
+  color: #9E9E9E;
+}
+
+/* Equivalente ao seu 'loginContainer' e 'loginLink' */
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+  color: var(--text-color);
+  font-size: 0.9em;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Feedback de erro/sucesso do formulário */
+.form-feedback {
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.error-feedback {
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
+}
+
+.success-feedback {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #C8E6C9;
+}
