@@ -1,0 +1,95 @@
+<div class="register-page-wrapper">
+  <div class="register-container">
+    <h2>Create an account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-field-group">
+        <mat-icon class="field-icon">person</mat-icon>
+        <div class="form-field">
+          <input type="text" id="name" formControlName="name" placeholder="Name">
+        </div>
+      </div>
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="error-message-container">
+        <small *ngIf="name?.errors?.['required']">Name is required.</small>
+      </div>
+
+      <div class="form-field-group">
+        <mat-icon class="field-icon">account_circle</mat-icon>
+        <div class="form-field">
+          <input type="text" id="username" formControlName="username" placeholder="Username">
+        </div>
+      </div>
+      <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="error-message-container">
+        <small *ngIf="username?.errors?.['required']">Username is required.</small>
+        <small *ngIf="username?.errors?.['minlength']">Username must be at least 3 characters long.</small>
+      </div>
+
+      <div class="form-field-group">
+        <mat-icon class="field-icon">email</mat-icon>
+        <div class="form-field">
+          <input type="email" id="email" formControlName="email" placeholder="Email">
+        </div>
+      </div>
+      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error-message-container">
+        <small *ngIf="email?.errors?.['required']">Email is required.</small>
+        <small *ngIf="email?.errors?.['email']">Invalid email format.</small>
+      </div>
+
+      <div class="form-field-group">
+        <mat-icon class="field-icon">phone</mat-icon>
+        <div class="form-field">
+          <input type="tel" id="phone" formControlName="phone" placeholder="Phone (Optional)">
+        </div>
+      </div>
+      <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="error-message-container">
+        <small *ngIf="phone?.errors?.['pattern']">Invalid phone format.</small>
+      </div>
+
+      <div class="form-field-group">
+        <mat-icon class="field-icon">location_on</mat-icon>
+        <div class="form-field">
+          <input type="text" id="address" formControlName="address" placeholder="Address (Optional)">
+        </div>
+      </div>
+
+      <div class="form-field-group">
+        <mat-icon class="field-icon">lock</mat-icon>
+        <div class="form-field">
+          <input type="password" id="password" formControlName="password" placeholder="Password">
+        </div>
+      </div>
+      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error-message-container">
+        <small *ngIf="password?.errors?.['required']">Password is required.</small>
+        <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+      </div>
+
+      <div class="form-field-group">
+        <mat-icon class="field-icon">vpn_key</mat-icon>
+        <div class="form-field">
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password">
+        </div>
+      </div>
+      <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="error-message-container">
+        <small *ngIf="confirmPassword?.errors?.['required']">Confirming password is required.</small>
+      </div>
+      <div *ngIf="registerForm.errors?.['mismatch'] && (confirmPassword?.dirty || confirmPassword?.touched)" class="error-message-container">
+        <small>Passwords do not match.</small>
+      </div>
+
+      <div *ngIf="errorMessage" class="form-feedback error-feedback">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="form-feedback success-feedback">
+        {{ successMessage }}
+      </div>
+
+      <button type="submit" class="btn-signup" [disabled]="isLoading || registerForm.invalid">
+        {{ isLoading ? 'Signing Up...' : 'SIGN UP' }}
+      </button>
+    </form>
+
+    <div class="login-link">
+      Already have an account? <a routerLink="/login">Login Up</a>
+    </div>
+  </div>
+</div>
